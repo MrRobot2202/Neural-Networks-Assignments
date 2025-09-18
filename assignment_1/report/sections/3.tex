@@ -1,0 +1,16 @@
+\section*{Exercise 3}
+
+
+
+
+
+1. Make a figure to describe the architecture of your CNN. Specify the corresponding
+hyper-parameters and trainable parameters used in every layer of your network. Cal-
+culate manually the output size of each layer. \\
+2. What is the total number of trainable parameters of your network? Report the results
+you get after certain number of epochs (e.g. 50) and compare them with the results
+obtained from VGGNet.\\
+
+So for our network we are only supposed to use four layers, so I assume they count only the ones with trainable parameters.. since there are four we could do three convolutional and then one fully connected one, or two and two but no clue. With two and two we couldnt scale it down that much any more so we will have to think it through because the feature extraction is very important . 
+I would love to use average pooling instead of max pooling since I am really wondering what the difference would be there.
+For the activation function I we could use tanh just to see what happens as well he he, I never really liked the ReLu. we will also take a look at the dropout layers, I need to rehearse that anyways..
