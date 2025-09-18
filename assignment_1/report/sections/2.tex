@@ -1,0 +1,29 @@
+\section*{Exercise 2}
+\subsection*{Data-related questions}
+
+a. \textbf{Briefly describe the CIFAR-10 dataset used in this implementation, incl. the types of images and categories.}\\
+The CIFAR-10 dataset contains 60,000 color images (32x32 pixels) across 10 classes, with 6,000 images per class. It is split into 50,000 training images and 10,000 test images.
+The training data is organised into five batches of 10,000 images each, while the test set is one batch of 10,000 images (1,000 from each class). Each class is distinct with no overlap between categories.\\
+The 10 classes are:
+\begin{enumerate}
+	\item airplane
+	\item automobile
+	\item bird
+	\item  cat
+	\item  deer
+	\item  dog
+	\item rog
+	\item horse
+	\item ship
+	\item ruck
+\end{enumerate}
+b. \textbf{What are the transformations used for data augmentation?} \\
+Before training the model, two main data augmentation techniques are applied. Images are randomly cropped to size 32x32 with a padding of 4. This simulates zooming and shifting, making the model less sensitive to the exact position of objects. Images are also randomly flipped horizontally, which helps the model generalise better to mirrored versions of objects.
+In addition, all images are  normalised using the dataset's mean and standard deviation for the training and testing data.
+
+These augmentations increase the diversity of the training data and reduce the risk of overfitting, since the model cannot rely on memorizing specific pixel arrangements. Instead, it learns more general patterns.
+\subsection*{Model-related questions}
+
+a. What is an optimizer? What is the initial learning rate? You can change the value of the initial learning rate and check how it affects the model performance (fast or slow convergence). You can select two different learning rates, one is larger and the other is
+smaller than the default setting and plot the training curves. \\
+b. Confirm the size of the feature maps after each convolution block. Display the feature maps. You can show 3 images of the 2D feature maps from 3 different convolutional blocks: the first, the last and one in between that is up to your choice. In total, you will have 9 images.

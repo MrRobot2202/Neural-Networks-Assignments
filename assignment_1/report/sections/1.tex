@@ -1,7 +1,7 @@
 %!TEX root = IS_0_s1234567_s2345678.tex
 
 
-\section{Exercise 1}
+\section*{Exercise 1}
 In both figure \ref{figure_1} and figure \ref{figure_2}, we observe similar noteworthy phenomena. Firstly, the test losses and test accuracies are noticeably noisier than their respective training counterparts. This is most likely due to the difference in dataset sizes: the training set contains many more images, so averaging over all batches produces a smoother curve. The test set is smaller, which results in greater variation around its average trend.
 Both diagrams also indicate a plateau of loss and accuracy at around 175 epochs. The training data approaches nearly perfect accuracy with very low loss, whereas the test metrics plateau at a loss of around 0.5 and an accuracy of about 90\%. This gap suggests potential overfitting, since the model performs extremely well on the training data but reaches a performance ceiling on unseen test data. Because of the figures stagnating nature, more epochs would not aid the training process and might only increase overfitting. 
 
