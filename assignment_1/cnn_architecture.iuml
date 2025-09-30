@@ -1,0 +1,72 @@
+@startuml CNN_Architecture
+
+skinparam defaultTextAlignment center
+
+rectangle "**Input**\n3×32×32\nRGB Image" as input
+
+rectangle "**Conv2d-1**\nChannels: 3→32\nKernel: 3×3\nStride: 1, Padding: 1\n**Params:** 896\nOutput: 32×32×32" as conv1
+
+rectangle "**ReLU**" as relu1
+
+rectangle "**AvgPool2d**\nKernel: 2×2\nStride: 2\nOutput: 32×16×16" as pool1
+
+rectangle "**Conv2d-2**\nChannels: 32→64\nKernel: 3×3\nStride: 1, Padding: 1\n**Params:** 18,496\nOutput: 64×16×16" as conv2
+
+rectangle "**ReLU**" as relu2
+
+rectangle "**AvgPool2d**\nKernel: 2×2\nStride: 2\nOutput: 64×8×8" as pool2
+
+rectangle "**Conv2d-3**\nChannels: 64→128\nKernel: 3×3\nStride: 1, Padding: 1\n**Params:** 73,856\nOutput: 128×8×8" as conv3
+
+rectangle "**ReLU**" as relu3
+
+rectangle "**AvgPool2d**\nKernel: 2×2\nStride: 2\nOutput: 128×4×4" as pool3
+
+rectangle "**Dropout**\np=0.5\nOutput: 128×4×4" as dropout
+
+rectangle "**Flatten**\nOutput: 2048" as flatten
+
+rectangle "**FC Layer**\nInput: 2048\nOutput: 10\n**Params:** 20,490" as fc
+
+rectangle "**Output**\n10 classes" as output
+
+input -right-> conv1
+conv1 -right-> relu1
+relu1 -right-> pool1
+pool1 -right-> conv2
+conv2 -right-> relu2
+relu2 -right-> pool2
+pool2 -down-> conv3
+conv3 -down-> relu3
+relu3 -left-> pool3
+pool3 -left-> dropout
+dropout -left-> flatten
+flatten -left-> fc
+fc -left-> output
+
+note top of conv1
+  **Calculation:**
+  Size: (32-3+2×1)/1+1 = 32
+  Params: 32×(3×3×3+1) = 896
+end note
+
+note top of conv2
+  **Calculation:**
+  Size: (16-3+2×1)/1+1 = 16
+  Params: 64×(3×3×32+1) = 18,496
+end note
+
+note left of conv3
+  **Calculation:**
+  Size: (8-3+2×1)/1+1 = 8
+  Params: 128×(3×3×64+1) = 73,856
+end note
+
+note top of output
+  **Total Trainable Parameters: 113,738**
+  Conv1: 896 | Conv2: 18,496 | Conv3: 73,856 | FC: 20,490
+  (FC: 2048×10 + 10 bias)
+  Pooling & Dropout layers: 0 parameters
+end note
+
+@enduml
