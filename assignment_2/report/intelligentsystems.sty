@@ -1,0 +1,111 @@
+\ProvidesPackage{intelligentsystems}[2016/04/28 Package for the course Introduction to Intelligent Systems]
+
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+  family=MCS,
+  prefix=MCS@
+}
+
+
+\RequirePackage[english]{babel}
+
+\RequirePackage{todonotes}
+
+%Fonts
+\RequirePackage[sc]{mathpazo}
+\RequirePackage[T1]{fontenc}
+\linespread{1.05}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{lettrine}
+
+%Layout 
+\RequirePackage{a4wide}
+\RequirePackage{titlesec}
+\titleformat{\section}[block]{\large\scshape}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\large\scshape}{\thesubsection.}{1em}{}
+\titleformat{\subsubsection}[block]{\scshape}{\thesubsubsection.}{1em}{}
+
+%Grahpics
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage[hang, small,labelfont=bf,up,textfont=sl,up, justification=raggedright]{caption}
+\RequirePackage{subcaption}
+\DeclareCaptionLabelFormat{opening}{(#2)}
+\captionsetup{subrefformat=opening}
+
+%Listings
+\RequirePackage{color}
+\RequirePackage{courier}
+
+\definecolor{light-gray}{gray}{0.95}
+
+\RequirePackage{listings}
+\lstset{language=Matlab, 
+	tabsize = 4, 
+	columns=flexible, 
+	breaklines = true, 
+	backgroundcolor=\color{light-gray},
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle=\ttfamily,
+	commentstyle=\color[rgb]{0.05,0.18,0.15},
+	keywordstyle=[1]\color[rgb]{0,0,0.75},
+	keywordstyle=[2]\color[rgb]{0.5,0.0,0.0},
+	keywordstyle=[3]\color[rgb]{0.127,0.427,0.514},
+	keywordstyle=[4]\color[rgb]{0.4,0.4,0.4},
+	stringstyle=\color[rgb]{0.639,0.082,0.082},	
+}
+%Math
+\RequirePackage[scientific-notation=true, round-mode=figures, round-precision=3, exponent-base=e, exponent-product={}]{siunitx}
+\RequirePackage{mathtools}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+
+% References
+\RequirePackage{varioref}
+\RequirePackage{hyperref}
+\RequirePackage[noabbrev]{cleveref}
+
+\crefname{lstlisting}{listing}{listings}
+\Crefname{lstlisting}{Listing}{Listings}
+
+%Bibliography
+\RequirePackage[backend=bibtex]{biblatex}
+\RequirePackage{csquotes}
+\bibliography{biblio}
+
+%Define title
+\DeclareStringOption[-1]{labNumber}[-1]
+\DeclareStringOption[nameless]{authorOne}[nameless]
+\DeclareStringOption[-1]{studentNumberOne}[-1]
+\DeclareStringOption[nameless]{authorZero}[nameless]
+\DeclareStringOption[-1]{studentNumberZero}[-1]
+\DeclareStringOption[-1]{groupNumber}[-1]
+\ProcessKeyvalOptions*
+\author{%
+	Group \MCS@groupNumber~\\\MCS@authorZero{} ({\sc s}\MCS@studentNumberZero) \& \MCS@authorOne{} ({\sc s}\MCS@studentNumberOne)
+}
+\title{Introduction to Intelligent Systems\\Lab Session \MCS@labNumber}
+
+%Operators
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%
+\let\oldexp\exp
+\makeatother             
+
+%Renewed commands
+\renewcommand{\t}[1]{\texttt{#1}}
+\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}}
+\renewcommand{\exp}[1]{\ensuremath{e^{#1}}}
