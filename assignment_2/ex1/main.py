@@ -13,13 +13,30 @@ import matplotlib.pyplot as plt
 
 from Autoencoder import Autoencoder
 
+import numpy as np
+import random
+
+SEED = 13
+# setting a seed for reproductibility
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ['PYTHONHASHSEED'] = str(seed)
+
+set_seed(SEED)
+
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Autoencoder Training')
 parser.add_argument('--lr', default=1e-3, type=float, help='learning rate')
 parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
 parser.add_argument('--epochs', default=50, type=int, help='number of epochs')
 parser.add_argument('--batch_size', default=128, type=int, help='batch size')
 parser.add_argument('--latent', default=128, type=int, help='latent channels')
-parser.add_argument('--batch_number', default=0, type=int, help='Index of the test batch to use for reconstruction visualization')
+parser.add_argument('--batch_number', default=3, type=int, help='Index of the test batch to use for reconstruction visualization')
 args = parser.parse_args()
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -205,5 +222,5 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.title('Autoencoder Reconstruction Loss')
 plt.legend()
-plt.savefig('autoencoder_loss.png')
+plt.savefig('ex1_autoencoder_loss.png')
 plt.show()
