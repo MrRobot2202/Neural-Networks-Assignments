@@ -17,7 +17,7 @@ import numpy as np
 import random
 
 SEED = 13
-# setting a seed for reproductibility
+# setting a seed for reproducibility
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
@@ -37,6 +37,8 @@ parser.add_argument('--epochs', default=50, type=int, help='number of epochs')
 parser.add_argument('--batch_size', default=128, type=int, help='batch size')
 parser.add_argument('--latent', default=128, type=int, help='latent channels')
 parser.add_argument('--batch_number', default=3, type=int, help='Index of the test batch to use for reconstruction visualization')
+parser.add_argument('--loss', default='L1', type=str, choices=['L1', 'L2'], help='Loss function to use: L1 (MAE) or L2 (MSE).')
+
 args = parser.parse_args()
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -81,7 +83,14 @@ if args.resume:
         print('No checkpoint found at', ckptFile)
 
 # Loss, optimizer, scheduler
-criterion = nn.L1Loss()
+if args.loss.upper() == 'L2':
+    criterion = nn.MSELoss()
+    print("Using L2 Loss (nn.MSELoss)")
+elif args.loss.upper() == 'L1':
+    criterion = nn.L1Loss()
+    print("Using L1 Loss (nn.L1Loss)")
+else:
+    raise ValueError(f"Unknown loss type: {args.loss}. Choose 'L1' or 'L2'.")
 optimizer = optim.Adam(autoenc.parameters(), lr=args.lr, weight_decay=1e-5)
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
@@ -210,7 +219,7 @@ visualizeReconstructions_simple(
     testloader,
     batch_index=args.batch_number - 1,
     numImages=10,  # first 10 images from that batch
-    outFile='reconstructions.png'
+    outFile=f'reconstructions_for_{args.loss.lower()}.png'
 )
 
 # Plot losses
@@ -220,7 +229,7 @@ plt.plot(iterations, train_losses, label='Train Loss')
 plt.plot(iterations, val_losses, label='Val Loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
-plt.title('Autoencoder Reconstruction Loss')
+plt.title(f'Autoencoder Reconstruction Loss for {args.loss.upper()}')
 plt.legend()
-plt.savefig('ex1_autoencoder_loss.png')
+plt.savefig(f'ex1_autoencoder_loss_{args.loss.lower()}.png')
 plt.show()
