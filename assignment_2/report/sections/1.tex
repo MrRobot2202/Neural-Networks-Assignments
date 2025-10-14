@@ -40,6 +40,14 @@ From the image reconstructions above we can see that the bottom rows (reconstruc
 
 \subsection{Step 2}
 
+After training the autoencoder with L1 loss, we removed the decoder and used the encoder for a supervised classification task on CIFAR-10. We added a linear classification head on top of the encoder and trained it using cross-entropy loss. We compared the two models: one using the pretrained encoder weights and one trained from scratch. Both models used the same optimizer, learning rate, number of epochs, and data settings to make the comparison fair. From the plot below, the pretrained model reached high training accuracy much faster and had better and more stable test accuracy. This shows that pretraining helped the model learn useful features and improved the downstream performance.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.95\textwidth]{assignment_2/report/images/ex1_downstream_accuracy_comparison.png} 
+    \caption{Downstream Accuracy Comparison for L1}
+\end{figure}
+
 
 
 
