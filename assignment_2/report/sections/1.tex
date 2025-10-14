@@ -4,11 +4,11 @@
 \section{Exercise 1}
 \subsection{Step 1}
 
-We implemented an autoencoder deigned for CIFAR-10 image data. The code is structured in 4 classes: encoder.py, decoder.py, autoencoder,py and main.py. A random seed was used to ensure reproducibility.
+We implemented an autoencoder deigned for CIFAR-10 image data. The code is structured in 4 classes: encoder.py, decoder.py, autoencoder,py and train autoencoder.py. A random seed was used to ensure reproducibility.
 
 The Encoder module consists of 4 convolutional layers. For downsampling, we used stride-2 convolutions in the first 3 layers. For the Decoder module, we also used 4 convolutional layers and for upsampling we used transposed convolutions with a stride of 2. The final layer uses sigmoid activation function to match the input image normalization range between [0,1].
 
-The training script (main.py) was adapted from the last assignment with some modifications related to the loss function, the visualization logic and how the model is saved. Below, you can find the autoencoder losses plots and reconstructions for L1 and L2. The visualization code allows for the model to select a specific test batch index (default is batch 3) and displays 10 original and reconstructed images. The script also saves the separate encoder weights in encoder.pth.
+The training script (main.py) was adapted from the last assignment with some modifications related to the loss function, the visualization logic and how the model is saved. Below, you can find the autoencoder losses plots and reconstructions for L1 and L2. The visualization code allows for the model to select a specific test batch index (default is batch 3) and displays 10 original and reconstructed images. The script also saves the separate encoder weights in encoder.pth in the checkpoint autoenc folder which is generated once you start the training process (a copy of this folder will also be provided just in case).
 
 \begin{figure}[H] 
     \centering
