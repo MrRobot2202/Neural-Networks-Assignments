@@ -86,7 +86,7 @@ model_finetune = DownstreamClassifier(
 criterion_cls = nn.CrossEntropyLoss()
 optimizer_finetune = optim.Adam(model_finetune.parameters(), lr=1e-3)
 
-num_epochs = 20
+num_epochs = 50
 train_accs_finetune, test_accs_finetune = [], []
 
 for epoch in range(num_epochs):
