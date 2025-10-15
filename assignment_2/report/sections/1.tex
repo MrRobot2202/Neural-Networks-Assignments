@@ -4,7 +4,7 @@
 \section{Exercise 1}
 \subsection{Step 1}
 
-We implemented an autoencoder deigned for CIFAR-10 image data. The code is structured in 4 classes: encoder.py, decoder.py, autoencoder,py and train autoencoder.py. A random seed was used to ensure reproducibility.
+We implemented an autoencoder designed for CIFAR-10 image data. The code is structured in 4 classes: encoder.py, decoder.py, autoencoder,py and train autoencoder.py. A random seed was used to ensure reproducibility.
 
 The Encoder module consists of 4 convolutional layers. For downsampling, we used stride-2 convolutions in the first 3 layers. For the Decoder module, we also used 4 convolutional layers and for upsampling we used transposed convolutions with a stride of 2. The final layer uses sigmoid activation function to match the input image normalization range between [0,1].
 
@@ -12,13 +12,13 @@ The training script (main.py) was adapted from the last assignment with some mod
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.8\textwidth]{assignment_2/report/images/ex1_autoencoder_loss_l1.png} 
+    \includegraphics[width=0.8\textwidth]{images/ex1_autoencoder_loss_l1} 
     \caption{Autoencoder Loss for L1}
 \end{figure}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.8\textwidth]{assignment_2/report/images/ex1_autoencoder_loss_l2.png} 
+    \includegraphics[width=0.8\textwidth]{images/ex1_autoencoder_loss_l2} 
     \caption{Autoencoder Loss for L2}
 \end{figure}
 
@@ -26,13 +26,13 @@ From the plots above, we can see that L2 loss penalizes large errors by squaring
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{assignment_2/report/images/ex1_reconstructions_l1.png} 
+    \includegraphics[width=0.95\textwidth]{images/ex1_reconstructions_l1} 
     \caption{Reconstructions for L1}
 \end{figure}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{assignment_2/report/images/ex1_reconstructions_l2.png} 
+    \includegraphics[width=0.95\textwidth]{images/ex1_reconstructions_l2} 
     \caption{Reconstructions for L2}
 \end{figure}
 
@@ -44,7 +44,7 @@ After training the autoencoder with L1 loss, we removed the decoder and used the
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{assignment_2/report/images/ex1_downstream_accuracy_comparison.png} 
+    \includegraphics[width=0.95\textwidth]{images/ex1_downstream_accuracy_comparison} 
     \caption{Downstream Accuracy Comparison for L1}
 \end{figure}
 
