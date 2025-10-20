@@ -12,13 +12,13 @@ The training script (main.py) was adapted from the last assignment with some mod
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.8\textwidth]{images/ex1_autoencoder_loss_l1} 
+    \includegraphics[width=0.8\textwidth]{images/ex_1/ex1_autoencoder_loss_l1} 
     \caption{Autoencoder Loss for L1}
 \end{figure}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.8\textwidth]{images/ex1_autoencoder_loss_l2} 
+    \includegraphics[width=0.8\textwidth]{images/ex_1/ex1_autoencoder_loss_l2} 
     \caption{Autoencoder Loss for L2}
 \end{figure}
 
@@ -26,17 +26,31 @@ From the plots above, we can see that L2 loss penalizes large errors by squaring
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{images/ex1_reconstructions_l1} 
+    \includegraphics[width=0.95\textwidth]{images/ex_1/ex1_reconstructions_l1} 
     \caption{Reconstructions for L1}
 \end{figure}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{images/ex1_reconstructions_l2} 
+    \includegraphics[width=0.95\textwidth]{images/ex_1/ex1_reconstructions_l2} 
     \caption{Reconstructions for L2}
 \end{figure}
 
 From the image reconstructions above we can see that the bottom rows (reconstructions) are very similar to their corresponding original images on top rows. The only differences we noticed were regarding to colours, for example, the cargo on the ship is more colourful in the original image than the cargo in the reconstructions. Between L1 and L2 reconstructions, we can't see any differences with the naked eye, showing that even though L2 behaved better in the plots, the differences in the actual reconstructed images are insignificant.
+
+\textbf{Code}
+
+\textbf{Encoder}
+\lstinputlisting{scripts/ex_1/Encoder.py}
+
+\textbf{Decoder}
+\lstinputlisting{scripts/ex_1/Decoder.py}
+
+\textbf{Autoencoder}
+\lstinputlisting{scripts/ex_1/Autoencoder.py}
+
+\textbf{Train Autoencoder}
+\lstinputlisting{scripts/ex_1/train_autoencoder.py}
 
 \subsection{Step 2}
 
@@ -44,9 +58,17 @@ After training the autoencoder with L1 loss, we removed the decoder and used the
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.95\textwidth]{images/ex1_downstream_accuracy_comparison} 
+    \includegraphics[width=0.95\textwidth]{images/ex_1/ex1_downstream_accuracy_comparison} 
     \caption{Downstream Accuracy Comparison for L1}
 \end{figure}
+
+\textbf{Code}
+
+\textbf{Downstream Classifier}
+\lstinputlisting{scripts/ex_1/DownstreamClassifier.py}
+
+\textbf{Train Downstream}
+\lstinputlisting{scripts/ex_1/train_downstream.py}
 
 
 
