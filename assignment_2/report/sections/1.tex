@@ -38,7 +38,7 @@ From the plots above, we can see that L2 loss penalizes large errors by squaring
 
 From the image reconstructions above we can see that the bottom rows (reconstructions) are very similar to their corresponding original images on top rows. The only differences we noticed were regarding to colours, for example, the cargo on the ship is more colourful in the original image than the cargo in the reconstructions. Between L1 and L2 reconstructions, we can't see any differences with the naked eye, showing that even though L2 behaved better in the plots, the differences in the actual reconstructed images are insignificant.
 
-\textbf{Code}
+\subsubsection{Code}
 
 \textbf{Encoder}
 \lstinputlisting{scripts/ex_1/Encoder.py}
@@ -62,7 +62,7 @@ After training the autoencoder with L1 loss, we removed the decoder and used the
     \caption{Downstream Accuracy Comparison for L1}
 \end{figure}
 
-\textbf{Code}
+\subsubsection{Code}
 
 \textbf{Downstream Classifier}
 \lstinputlisting{scripts/ex_1/DownstreamClassifier.py}

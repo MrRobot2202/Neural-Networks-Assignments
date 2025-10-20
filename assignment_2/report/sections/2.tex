@@ -27,7 +27,7 @@ The data had to be loaded and prepared to be used in training first. The structu
 In the final version, the images are just normalised to the same output format as the generated images, -1 to 1. \\
 
 
-When implementing the optimisers, the same article\cite{brownlee_tips_2019} was referred to in order to pick a suitable optimisation method and learning rate. Binary Cross-Entropy Loss is used since there are only two cases right and wrong for both generator and discriminator. The difference between the SGD and the Adam optimiser is that the Adam optimiser adapts its learning rates for each parameter depending  on the mean and variance of the gradient. \\
+When implementing the optimisers, the same article\cite{brownlee_tips_2019} was referred in order to pick a suitable optimisation method and learning rate. Binary Cross-Entropy Loss is used since there are only two cases right and wrong for both generator and discriminator. The difference between the SGD and the Adam optimiser is that the Adam optimiser adapts its learning rates for each parameter depending  on the mean and variance of the gradient. \\
 The training loop works through multiple batches per epoch. For each batch, first the gradients from the last training round are removed and then the discriminator is trained first and afterwards the generator. Note here that the discriminator is only trained every second iteration to prevent the discriminator being too strong. An early test run without that feature indicated: \\
 \newline 
 Saved images for epoch 60\\
@@ -116,7 +116,9 @@ It can be observed that the generator is not improving in contrast to the discri
         \caption{Losses during training}
     \end{figure}
 
-
+\subsubsection{Training Implementation}
+\textbf{Disclaimer}
+Be aware that the model was trained on Google Colab just like the first lab session.
 \lstinputlisting{scripts/ex_2/main.py}
 
 
